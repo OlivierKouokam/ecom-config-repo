@@ -13,13 +13,14 @@ spring:
             #   predicates:
             #     - Path= /products/**
             - id: customer-route
-              uri: http://customer-service:8081 # Au lieu de lb://CUSTOMER-SERVICE
+              uri: http://customer-service:8081
               predicates:
                 - Path=/customers/**
+    
             - id: inventory-route
-              uri: http://inventory-service:8082 # Au lieu de lb://INVENTORY-SERVICE
+              uri: http://inventory-service:8082
               predicates:
-                - Path=/products/**          
+                - Path=/products/**         
 
 
 
