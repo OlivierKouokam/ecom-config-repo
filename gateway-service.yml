@@ -4,14 +4,22 @@ spring:
       server:
         webflux:
           routes:
-            - id: r1
-              uri: lb://CUSTOMER-SERVICE
+            # - id: r1
+            #   uri: lb://CUSTOMER-SERVICE
+            #   predicates:
+            #     - Path= /customers/**
+            # - id: r2
+            #   uri: lb://INVENTORY-SERVICE
+            #   predicates:
+            #     - Path= /products/**
+            - id: customer-route
+              uri: http://customer-service:8081 # Au lieu de lb://CUSTOMER-SERVICE
               predicates:
-                - Path= /customers/**
-            - id: r2
-              uri: lb://INVENTORY-SERVICE
+                - Path=/customers/**
+            - id: inventory-route
+              uri: http://inventory-service:8082 # Au lieu de lb://INVENTORY-SERVICE
               predicates:
-                - Path= /products/**
+                - Path=/products/**          
 
 
 
