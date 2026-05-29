@@ -1,30 +1,30 @@
-spring:
-  cloud:
-    gateway:
-      routes:
-        - id: customer-route
-          uri: http://customer-service:8081
-          predicates:
-            - Path=/customers/**
-        - id: inventory-route
-          uri: http://inventory-service:8082
-          predicates:
-            - Path=/products/**
-
 # spring:
 #   cloud:
 #     gateway:
-#       server:
-#         webflux:
-#           routes:
-#             - id: r1
-#               uri: lb://CUSTOMER-SERVICE
-#               predicates:
-#                 - Path= /customers/**
-#             - id: r2
-#               uri: lb://INVENTORY-SERVICE
-#               predicates:
-#                 - Path= /products/**
+#       routes:
+#         - id: customer-route
+#           uri: http://customer-service:8081
+#           predicates:
+#             - Path=/customers/**
+#         - id: inventory-route
+#           uri: http://inventory-service:8082
+#           predicates:
+#             - Path=/products/**
+
+spring:
+  cloud:
+    gateway:
+      server:
+        webflux:
+          routes:
+            - id: r1
+              uri: lb://CUSTOMER-SERVICE
+              predicates:
+                - Path= /customers/**
+            - id: r2
+              uri: lb://INVENTORY-SERVICE
+              predicates:
+                - Path= /products/**
 
 
 
